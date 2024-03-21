@@ -64,8 +64,8 @@ def printall(connection):
     except sqlite3.Error as e:
         print(e)
 
-def sortf(connection):
-    sql = '''SELECT * FROM products WHERE price <= 100 AND quantity >= 5'''
+def sortf(connection, price, quantity):
+    sql = f'''SELECT * FROM products WHERE price <= {price} AND quantity >= {quantity}'''
     try:
         cursor = connection.cursor()
         cursor.execute(sql)
@@ -114,14 +114,14 @@ myconnection = create_connection('hw.db')
 # ]
 # for product in products1:
 #     insert(myconnection, product)
-update_quantity(myconnection, 7, 100)
-update_price(myconnection, 7, 100)
+# update_quantity(myconnection, 7, 100)
+# update_price(myconnection, 7, 100)
 
 
 # createtable(myconnection, sql_to_create)
 # insert(myconnection, ('banana', 100, 1))
 # delete(myconnection, 0)
 # printall(myconnection)
-# sortf(myconnection)
-searchname(myconnection, 'tesla')
+# sortf(myconnection, 100, 1)
+# searchname(myconnection, 'tesla')
 myconnection.close()
